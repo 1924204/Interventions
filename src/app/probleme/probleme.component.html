@@ -1,5 +1,5 @@
+<br/>
 <div class="container">
-    <br/>
     <div class="card">
     <div class="card-header text-white bg-secondary">
     <!-- L'en-tête ici -->
@@ -9,7 +9,45 @@
     </div>
     <div class="card-body">
     <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+    <div class="card-text">
+      <form class="form-horizontal"
+      novalidate
+      (ngSubmit)="save()"
+      [formGroup]="problemeForm">
+      <div class="from-group row">
+        <label for="prenomId" class="col-md-2 col-form-label">Prenom</label>
+        <div class="col-md-10">
+          <input class="form-control" 
+          id="prenomId" 
+          type="text"
+          placeholder="Prenom (obligatoire)"
+           formControlName="prenom" 
+           [ngClass]="{'is-invalid': (problemeForm.get('prenom').touched ||
+           problemeForm.get('prenom').dirty) && 
+           !problemeForm.get('prenom').valid,
+           'is-valid': (problemeForm.get('prenom').touched ||
+           problemeForm.get('prenom').dirty) && 
+           problemeForm.get('prenom').valid }"/>
+
+          <span class="form-text" *ngIf="(problemeForm.get('prenom').touched ||
+        problemeForm.get('prenom').dirty) && 
+        problemeForm.get('prenom').errors">
+
+        <span *ngIf="problemeForm.get('prenom').errors.minlength">
+          <small class="text-muted">
+          Au moins 3 caractères!
+        </small>
+        </span>
+        <span *ngIf="problemeForm.get('prenom').errors.required">
+          <small class="text-muted">
+          Le champ est vide!
+        </small>
+        </span>
+      </span>
+        </div>
+      </div>
+    </form>
+      </div>
     </div>
     <div class="card-footer">
     <!-- Bouton save ici -->
@@ -22,4 +60,3 @@
     </div>
     </div>
    </div> 
-   
