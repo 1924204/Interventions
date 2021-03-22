@@ -30,7 +30,7 @@ describe('ProblemeComponent', () => {
     let zone = component.problemeForm.get('prenom');
     zone.setValue('a'.repeat(2));
     errors = zone.errors || {};
-    expect(errors['minlength']).toBeTruthy();
+    expect(errors['nbreCaracteresInsuffisants']).toBeTruthy();
   });
 
   it('Zone PRÉNOM valide avec 3 caractères', () => {
@@ -38,7 +38,7 @@ describe('ProblemeComponent', () => {
     let zone = component.problemeForm.get('prenom');
     zone.setValue('a'.repeat(3));
     errors = zone.errors || {};
-    expect(errors['minlength']).toBeFalsy();
+    expect(errors['nbreCaracteresInsuffisants']).toBeFalsy();
   });
 
   it('Zone PRÉNOM valide avec 200 caractères', () => {
@@ -46,7 +46,7 @@ describe('ProblemeComponent', () => {
     let zone = component.problemeForm.get('prenom');
     zone.setValue('a'.repeat(200));
     errors = zone.errors || {};
-    expect(errors['minlength']).toBeFalsy();
+    expect(errors['nbreCaracteresInsuffisants']).toBeFalsy();
   });
 
   it('Zone PRÉNOM invalide avec aucune valeur', () => {
@@ -69,6 +69,6 @@ describe('ProblemeComponent', () => {
     let zone = component.problemeForm.get('prenom');
     zone.setValue('a  '.trim());
     errors = zone.errors || {};
-    expect(errors['minlength']).toBeTruthy();
+    expect(errors['nbreCaracteresInsuffisants']).toBeTruthy();
   });
 });
