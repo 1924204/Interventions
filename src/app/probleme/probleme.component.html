@@ -8,14 +8,14 @@
   </nav>
     </div>
     <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
+    <h5 class="card-title">Veuillez renseigner les zones suivante et soumettre votre demande</h5>
     <div class="card-text">
       <form class="form-horizontal"
       novalidate
       (ngSubmit)="save()"
       [formGroup]="problemeForm">
       <div class="from-group row">
-        <label for="prenomId" class="col-md-2 col-form-label">Prenom</label>
+        <label for="prenomId" class="col-md-2 col-form-label text-right">Prénom :</label>
         <div class="col-md-10">
           <input class="form-control" 
           id="prenomId" 
@@ -44,8 +44,19 @@
         </small>
         </span>
       </span>
-        </div>
+    </div>
+  </div>
+      <div class="from-group row">
+      <label for="noTypeId" class="col-md-2 col-form-label text-right">Type :</label>
+      <div class="col-md-10">
+        <select class="form-control"
+        id="noTypeId"
+        formControlName="noType">
+        <option value="">Sélectionner un type de problème</option>
+        <option *ngFor="let type of typesProblemes" [value]="type.id">{{type.descriptionTypeProbleme}}</option>
+      </select>
       </div>
+        </div>
     </form>
       </div>
     </div>
