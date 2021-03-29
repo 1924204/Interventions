@@ -17,20 +17,20 @@
       <div class="from-group row">
         <label for="prenomId" class="col-md-2 col-form-label text-right">Prénom :</label>
         <div class="col-md-10">
-          <input class="form-control" 
-          id="prenomId" 
+          <input class="form-control"
+          id="prenomId"
           type="text"
           placeholder="Votre prénom ici (obligatoire)"
-           formControlName="prenom" 
+           formControlName="prenom"
            [ngClass]="{'is-invalid': (problemeForm.get('prenom').touched ||
-           problemeForm.get('prenom').dirty) && 
+           problemeForm.get('prenom').dirty) &&
            !problemeForm.get('prenom').valid,
            'is-valid': (problemeForm.get('prenom').touched ||
-           problemeForm.get('prenom').dirty) && 
+           problemeForm.get('prenom').dirty) &&
            problemeForm.get('prenom').valid }"/>
 
           <span class="form-text" *ngIf="(problemeForm.get('prenom').touched ||
-        problemeForm.get('prenom').dirty) && 
+        problemeForm.get('prenom').dirty) &&
         problemeForm.get('prenom').errors">
 
         <span *ngIf="problemeForm.get('prenom').errors.nbreCaracteresInsuffisants">
@@ -49,26 +49,21 @@
   <div class="from-group row">
     <label for="noTypeId" class="col-md-2 col-form-label text-right">Nom :</label>
     <div class="col-md-10">
-      <input class="form-control" 
-      id="nomId" 
+      <input class="form-control"
+      id="nomId"
       type="text"
       placeholder="Votre nom ici (obligatoire)"
        formControlName="nom"
        [ngClass]="{'is-invalid': (problemeForm.get('nom').touched ||
-           problemeForm.get('nom').dirty) && 
+           problemeForm.get('nom').dirty) &&
            !problemeForm.get('nom').valid,
            'is-valid': (problemeForm.get('nom').touched ||
-           problemeForm.get('nom').dirty) && 
+           problemeForm.get('nom').dirty) &&
            problemeForm.get('nom').valid }" />
            <span class="form-text" *ngIf="(problemeForm.get('nom').touched ||
-           problemeForm.get('nom').dirty) && 
+           problemeForm.get('nom').dirty) &&
            problemeForm.get('nom').errors">
-   
-           <span *ngIf="problemeForm.get('nom').errors.nbreCaracteresInsuffisants">
-             <small class="text-muted">
-             Veuillez entrer plus de caractères.
-           </small>
-           </span>
+
            <span *ngIf="problemeForm.get('nom').errors.nbreCaracteresTrop">
             <small class="text-muted">
             Veuillez entrer moins de caractères.
@@ -89,10 +84,10 @@
         id="noTypeId"
         formControlName="noType"
         [ngClass]="{'is-invalid': (problemeForm.get('noType').touched ||
-           problemeForm.get('noType').dirty) && 
+           problemeForm.get('noType').dirty) &&
            !problemeForm.get('noType').valid,
            'is-valid': (problemeForm.get('noType').touched ||
-           problemeForm.get('noType').dirty) && 
+           problemeForm.get('noType').dirty) &&
            problemeForm.get('noType').valid }">
 
         <option value="" >Sélectionner un type de problème (obligatoire)</option>
@@ -100,7 +95,7 @@
       </select>
 
       <span class="form-text" *ngIf="(problemeForm.get('noType').touched ||
-        problemeForm.get('noType').dirty) && 
+        problemeForm.get('noType').dirty) &&
         problemeForm.get('noType').errors">
         <span *ngIf="problemeForm.get('noType').errors.required">
           <small class="text-muted">
@@ -108,7 +103,7 @@
         </small>
         </span>
        </span>
-       
+
       </div>
         </div>
     </form>
@@ -118,10 +113,10 @@
     <!-- Bouton save ici -->
     <button type="button" class="btn btn-outline-primary">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save-fill" viewBox="0 0 16 16">
-        <path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2 
+        <path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2
         2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v7
         .793L4.854 6.646a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l3.5-3.5a.5.5 0 0 0-.708-.708L8.5 9.293V1.5z"/>
       </svg>Sauvegarder</button>
     </div>
     </div>
-   </div> 
+   </div>
