@@ -34,7 +34,8 @@ export class ProblemeComponent implements OnInit {
   }
 
 
-  appliquerNotifications(typeCueillette: string): void {
+  appliquerNotifications(typeNotification: string): void {
+    const telephoneControl = this.problemeForm.get('telephone');
     const courrielControl = this.problemeForm.get('courrielGroup.courriel');
     const courrielConfirmationControl = this.problemeForm.get('courrielGroup.courrielConfirmation');   
     const courrielGroupControl = this.problemeForm.get('courrielGroup');      
@@ -43,31 +44,26 @@ export class ProblemeComponent implements OnInit {
     courrielControl.clearValidators();
     courrielControl.reset();  // Pour enlever les messages d'erreur si le controle contenait des données invaldides
     courrielControl.disable();  
-
     courrielConfirmationControl.clearValidators();
     courrielConfirmationControl.reset();    
     courrielConfirmationControl.disable();
-
-    if (typeCueillette === 'Courriel') {   
+    telephoneControl.clearValidators();
+    telephoneControl.reset();
+    telephoneControl.disable();
+    if (typeNotification === 'Courriel') {   
       courrielControl.setValidators([Validators.required]);      
       courrielControl.enable();  
       courrielConfirmationControl.setValidators([Validators.required]);              
       courrielConfirmationControl.enable();  
-            // Si le validateur est dans un autre fichier l'écire sous la forme suivante : 
-            // ...Validators.compose([classeDuValidateur.NomDeLaMethode()])])
-      
-      }   
-      else
-      {
-        if(typeCueillette === 'Inconnu')
-        {
-          courrielControl.setValidators([Validators.required]);      
-          courrielControl.disable();           
-        }
-      }
+      }else if (typeNotification === 'Telephone') {
+        telephoneControl.setValidators([Validators.required]);
+        telephoneControl.enable();
+      }  
+      telephoneControl.updateValueAndValidity();
       courrielControl.updateValueAndValidity();   
       courrielConfirmationControl.updateValueAndValidity();         
   }
+  
   save(): void{
       
   }
