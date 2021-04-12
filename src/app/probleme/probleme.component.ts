@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { emailMatcherValidator } from '../shared/email-matcher/email-matcher.component';
 import { LongueurValidator } from '../shared/longueur-minimum/longueur-minimum.component';
 import { ITypeProbleme } from './typeprobleme';
 import { TypeproblemeService } from './typeprobleme.service';
@@ -50,21 +51,23 @@ export class ProblemeComponent implements OnInit {
     telephoneControl.clearValidators();
     telephoneControl.reset();
     telephoneControl.disable();
-    if (typeNotification === 'Courriel') {   
-      courrielControl.setValidators([Validators.required]);      
-      courrielControl.enable();  
-      courrielConfirmationControl.setValidators([Validators.required]);              
+    if (typeNotification === 'Courriel') { 
+      courrielGroupControl.setValidators([emailMatcherValidator.courrielDifferents()])
+      courrielControl.setValidators([Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+"), Validators.required])
+      courrielControl.enable();     
+      courrielConfirmationControl.setValidators([Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+"),  Validators.required])          
       courrielConfirmationControl.enable();  
-      }else if (typeNotification === 'Telephone') {
-        telephoneControl.setValidators([Validators.required]);
+      }else if (typeNotification === 'Telephone' || typeNotification === 'Texte') {
+        telephoneControl.setValidators([Validators.required, Validators.pattern("[0-9]+"), Validators.minLength(10), Validators.maxLength(10)]);
         telephoneControl.enable();
       }  
       telephoneControl.updateValueAndValidity();
       courrielControl.updateValueAndValidity();   
       courrielConfirmationControl.updateValueAndValidity();         
   }
-  
+
   save(): void{
       
   }
+  
 }
