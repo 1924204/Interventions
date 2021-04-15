@@ -8,7 +8,6 @@ export class LongueurValidator {
                     return null;
                 }
             }
-            
             return { 'nbreCaracteresTrop': true};
     }
     }
@@ -20,7 +19,6 @@ export class LongueurValidator {
                     return null;
                 }
             }
-            
             return { 'nbreCaracteresInsuffisants': true};
         };
     }
