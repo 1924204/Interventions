@@ -99,7 +99,8 @@
             <div class="col-md-2"></div>
             <div class="col-md-10">
               <label class="radio-inline">
-                <input type="radio" value="NePasNotifier" id="NotificationId" formControlName="notification">&nbsp;Ne Pas Notifier
+                <input type="radio" value="NePasNotifier" id="NotificationId" formControlName="notification">&nbsp;Ne
+                Pas Notifier
               </label>
               &nbsp;&nbsp;&nbsp;
               <label class="radio-inline">
@@ -214,18 +215,71 @@
             </div>
           </div>
 
+              <!-- Zone de texte # Unité  -->
+              <div class="form-group row">
+                <label for="noUniteId" class="col-md-2 col-form-label text-right"># Unité :</label>
+                <div class="col-md-10">
+                  <input class="form-control" id="noUniteId" type="text" placeholder="Numéro de l'unité si connu"
+                    formControlName="noUnite" />
+                </div>
+              </div>
+
+              <!-- Zone de texte DESCRIPTION DU PROBLÈME  -->
+              <div class="form-group row">
+                <label for="descriptionProblemeId" class="col-md-2 col-form-label text-right">Description du problème
+                  :</label>
+                <div class="col-md-10">
+                  <textarea class="form-control" rows="3" id="descriptionProblemeId" type="text"
+                    placeholder="Décrire le propblème ici (obligatoire)" formControlName="descriptionProbleme"
+                    [ngClass]="{'is-valid': (problemeForm.get('descriptionProbleme').touched || problemeForm.get('descriptionProbleme').dirty) &&
+          problemeForm.get('descriptionProbleme').valid, 
+          'is-invalid': (problemeForm.get('descriptionProbleme').touched || problemeForm.get('descriptionProbleme').dirty) &&
+          !problemeForm.get('descriptionProbleme').valid }"></textarea>
+
+                  <span class="form-text" *ngIf="(problemeForm.get('descriptionProbleme').touched || 
+          problemeForm.get('descriptionProbleme').dirty) && 
+          problemeForm.get('descriptionProbleme').errors">
+
+                    <span *ngIf="problemeForm.get('descriptionProbleme').errors.required">
+                      <small class="text-muted">
+                        N'oubliez pas de décrire le plus clairement possible le problème rencontré.
+                      </small>
+                    </span>
+
+                    <span *ngIf="problemeForm.get('descriptionProbleme').errors.minlength">
+                      <small class="text-muted">
+                        La description du problème doit comporter plus de 5 caractères.
+                      </small>
+                    </span>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Zone de texte # Unité  -->
+              <div class="form-group row">
+                <label for="dateProblemeId" class="col-md-2 col-form-label text-right">Date :</label>
+                <div class="col-md-10">
+                  <input class="form-control" id="dateProblemeId" type="text" formControlName="dateProbleme" />
+                </div>
+              </div>
+
+
+
+
+            
+
         </form>
       </div>
     </div>
     <div class="card-footer">
       <!-- Bouton save ici -->
-      <button type="button" class="btn btn-outline-primary">
+      <button class="btn btn-primary" type="submit" [disabled]="!problemeForm.valid">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save-fill"
           viewBox="0 0 16 16">
           <path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2
         2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v7
         .793L4.854 6.646a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l3.5-3.5a.5.5 0 0 0-.708-.708L8.5 9.293V1.5z" />
-        </svg>Sauvegarder</button>
+        </svg><i class="fa fa-save"></i>Sauvegarder</button>
     </div>
   </div>
 </div>

@@ -28,7 +28,10 @@ export class ProblemeComponent implements OnInit {
         courriel: [{ value: '', disabled: true }],
         courrielConfirmation: [{ value: '', disabled: true }],
       }),
-      telephone: [{ value: '', disabled: true }]
+      telephone: [{ value: '', disabled: true }],
+      descriptionProbleme: ['', [Validators.required, Validators.minLength(5)]],
+      noUnite: '',
+      dateProbleme: {value: Date(), disabled: true}
     });
 
     this.problemes.obtenirTypes()
