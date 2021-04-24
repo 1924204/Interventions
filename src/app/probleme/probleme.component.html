@@ -4,7 +4,7 @@
     <div class="card-header text-white bg-secondary">
       <!-- L'en-tête ici -->
       <nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand mb-0 h1">Déclarer un problème</span>
+        <h3 class="navbar-brand mb-0 h1">Déclarer un problème</h3>
       </nav>
     </div>
     <div class="card-body">
@@ -273,13 +273,14 @@
     </div>
     <div class="card-footer">
       <!-- Bouton save ici -->
-      <button class="btn btn-primary" type="submit" [disabled]="!problemeForm.valid">
+      <button class="btn btn-primary" type="submit" [disabled]="!problemeForm.valid">Sauvegarder</button>
+
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-save-fill"
           viewBox="0 0 16 16">
           <path d="M8.5 1.5A1.5 1.5 0 0 1 10 0h4a2 2 0 0 1 2
         2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h6c-.314.418-.5.937-.5 1.5v7
         .793L4.854 6.646a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l3.5-3.5a.5.5 0 0 0-.708-.708L8.5 9.293V1.5z" />
-        </svg><i class="fa fa-save"></i>Sauvegarder</button>
+        </svg><i class="fa fa-save"></i>
     </div>
   </div>
 </div>

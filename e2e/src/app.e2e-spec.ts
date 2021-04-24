@@ -10,14 +10,37 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', async () => {
     await page.navigateTo();
-    expect(await page.getTitleText()).toEqual('Interventions app is running!');
+    expect(await page.getParagraphText()).toEqual('Déclarer un problème');
   });
 
-  afterEach(async () => {
-    // Assert that there are no errors emitted from the browser
-    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-    expect(logs).not.toContain(jasmine.objectContaining({
-      level: logging.Level.SEVERE,
-    } as logging.Entry));
+  it('#38 | doit activer le bouton Sauvegarder avec champs valides scénario nominal', async () => {
+    await page.viderToutesLesZones();
+    await page.setChampsValidesScenarioNominal();                              
+    expect(await page.boutonSubmit().isEnabled()).toBeTruthy();
   });
+
+  it('#39 | doit active le bouton Sauvegarder avec champs valides scénario alternatif Par message TEXTE', async () => {
+    await page.viderToutesLesZones();
+    await page.setChampsValidesScenarioAlternatifParMessageTexte();                              
+    expect(await page.boutonSubmit().isEnabled()).toBeTruthy();
+  }); 
+  
+  it('#40 | doit active le bouton Sauvegarder avec champs valides scénario alternatif Par courriel', async () => {
+    await page.viderToutesLesZones();
+    await page.setChampsValidesScenarioAlternatifParCourriel();                              
+    expect(await page.boutonSubmit().isEnabled()).toBeTruthy();
+  });   
+
+  it('#41 | Zone DESCRIPTION DU PROBLEME a une bordure VERTE si nombre de caractères suffisant', async () => {
+    await page.viderToutesLesZones();
+    await page.setZoneDescriptionProblemeCaracteresSuffisants();                              
+    expect(await page.obtenirClasseZoneDescriptionProbleme()).toContain('is-valid');
+  });  
+
+  it('#42 | Zone DESCRIPTION DU PROBLEME a une bordure ROUGE si nombre de caractères insuffisant', async () => {
+    await page.setZoneDescriptionProblemeCaracteresInsuffisants();                      
+    expect(await page.obtenirClasseZoneDescriptionProbleme()).toContain('is-invalid');
+  });  
 });
+
+
