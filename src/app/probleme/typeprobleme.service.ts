@@ -8,14 +8,13 @@ import { catchError, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 
-//private baseUrl = 'api/typesprobleme';
+export class TypeProblemeService {
 
-export class TypeproblemeService {
-
+  private baseUrl = 'https://localhost:5001/Intervention';
   constructor(private http: HttpClient) { }
 
   obtenirTypes(): Observable<ITypeProbleme[]> {
-    return this.http.get<ITypeProbleme[]>('api/typesprobleme').pipe(
+    return this.http.get<ITypeProbleme[]>(this.baseUrl).pipe(
         tap(data => console.log('obtenirTypes: ' + JSON.stringify(data))),
         catchError(this.handleError)
         );
