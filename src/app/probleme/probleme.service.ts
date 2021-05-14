@@ -10,8 +10,9 @@ import { IProbleme } from './probleme';
 @Injectable()
 export class ProblemeService {
 
-private baseUrl = 'https://localhost:5001/Intervention';
+//private baseUrl = 'https://localhost:5001/Intervention';
 
+private baseUrl = "https://interventionsas2021.azurewebsites.net/Intervention";
 constructor(private _http: HttpClient) { }
 
 saveProbleme(probleme: IProbleme): Observable<IProbleme> {
